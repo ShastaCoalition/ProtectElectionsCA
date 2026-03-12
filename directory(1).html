@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CA Officials Directory — Shasta Coalition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1b2a;
+      color: #e8e8e8;
+      font-family: 'Open Sans', sans-serif;
+      min-height: 100vh;
+      padding: 0 0 60px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 48px 24px 32px;
+    }
+    .header-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #8fa8c8;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #7ab648;
+      margin-bottom: 4px;
+    }
+    .header h1 span {
+      color: #f5a623;
+      display: block;
+    }
+    .header-sub {
+      font-size: 1rem;
+      color: #8fa8c8;
+      margin-top: 10px;
+    }
+    .header-divider {
+      width: 48px;
+      height: 2px;
+      background: #f5a623;
+      margin: 20px auto;
+      border: none;
+    }
+    .verified-badge {
+      display: inline-block;
+      background: rgba(122,182,72,0.15);
+      border: 1px solid #7ab648;
+      color: #7ab648;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8fa8c8;
+      text-align: center;
+      margin: 36px 0 16px;
+    }
+
+    /* ── OFFICIAL CARDS ── */
+    .cards {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background: #162033;
+      border: 1px solid #1e3050;
+      border-radius: 14px;
+      padding: 22px 24px;
+    }
+    .card-role {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8fa8c8;
+      margin-bottom: 4px;
+    }
+    .card-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .card-note {
+      font-size: 0.8rem;
+      color: #8fa8c8;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .dial-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #f5a623;
+      color: #0d1b2a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 14px 20px;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .dial-btn:hover { background: #e09610; }
+    .dial-btn-alt {
+      background: transparent;
+      border: 2px solid #f5a623;
+      color: #f5a623;
+      margin-top: 8px;
+    }
+    .dial-btn-alt:hover { background: rgba(245,166,35,0.1); }
+
+    /* AG card — accent color variant */
+    .card.ag { border-color: #1e3a50; }
+    .card.ag .dial-btn { background: #1a8fca; color: #fff; }
+    .card.ag .dial-btn:hover { background: #1478aa; }
+    .card.ag .dial-btn-alt { border-color: #1a8fca; color: #1a8fca; }
+    .card.ag .dial-btn-alt:hover { background: rgba(26,143,202,0.1); }
+
+    /* financial cards */
+    .card.financial { border-color: #1e3a28; }
+    .card.financial .dial-btn { background: #7ab648; color: #0d1b2a; }
+    .card.financial .dial-btn:hover { background: #68a03a; }
+
+    /* ── VACANT BANNER ── */
+    .vacant-card {
+      background: #1a1a2e;
+      border: 1px solid #3a2a4a;
+      border-radius: 14px;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .vacant-label {
+      display: inline-block;
+      background: #3a2a4a;
+      color: #c084fc;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .vacant-card p {
+      font-size: 0.85rem;
+      color: #a88cc8;
+      line-height: 1.5;
+    }
+    .vacant-card strong { color: #c084fc; }
+
+    /* ── US SENATE ── */
+    .card.senate { border-color: #1e2a50; }
+    .card.senate .dial-btn { background: #3b5bdb; color: #fff; }
+    .card.senate .dial-btn:hover { background: #2f4abf; }
+    .card.senate .dial-btn-alt { border-color: #3b5bdb; color: #8fa8e8; }
+    .card.senate .dial-btn-alt:hover { background: rgba(59,91,219,0.1); }
+
+    /* ── BACK LINK ── */
+    .back-wrap {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .back-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #8fa8c8;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+    .back-link:hover { color: #f5a623; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 0.75rem;
+      color: #3a5070;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-eyebrow">Shasta Coalition · Civic Tools</div>
+    <h1>California<span>Officials</span></h1>
+    <div class="header-sub">State officials. One tap to call.</div>
+    <hr class="header-divider" />
+    <div class="verified-badge">✓ Verified March 2026</div>
+  </div>
+
+  <!-- GOVERNOR & CABINET -->
+  <div class="section-label">● Governor &amp; Cabinet</div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-role">Governor of California</div>
+      <div class="card-name">Gavin Newsom</div>
+      <div class="card-note">Can act by executive order — no legislation needed. Demand polling place protections, voter data ban, and National Guard deployment to ballot counting sites.</div>
+      <a class="dial-btn" href="tel:+19164452841">📞 (916) 445-2841</a>
+    </div>
+
+    <div class="card ag">
+      <div class="card-role">Attorney General</div>
+      <div class="card-name">Rob Bonta</div>
+      <div class="card-note">Can file preemptive lawsuits before interference occurs. Demand an Election Protection Task Force and prosecution of any Registrar who surrendered voter data without a court order.</div>
+      <a class="dial-btn" href="tel:+19162106276">📞 (916) 210-6276</a>
+      <a class="dial-btn dial-btn-alt" href="tel:+19164459555">&#128222; (916) 445-9555 (alt)</a>
+    </div>
+
+    <div class="card financial">
+      <div class="card-role">State Treasurer</div>
+      <div class="card-name">Fiona Ma</div>
+      <div class="card-note">Demand she use California's financial leverage — freeze state contracts and bond deals with counties cooperating with illegal federal voter purges.</div>
+      <a class="dial-btn" href="tel:+19166532995">📞 (916) 653-2995</a>
+    </div>
+
+    <div class="card financial">
+      <div class="card-role">State Controller</div>
+      <div class="card-name">Malia Cohen</div>
+      <div class="card-note">Same demand as Treasurer — use financial oversight tools to protect election integrity and refuse to fund counties complicit in voter suppression.</div>
+      <a class="dial-btn" href="tel:+19164452636">📞 (916) 445-2636</a>
+    </div>
+
+  </div>
+
+  <!-- U.S. SENATE -->
+  <div class="section-label">● U.S. Senate</div>
+  <div class="cards">
+
+    <div class="card senate">
+      <div class="card-role">U.S. Senator — California</div>
+      <div class="card-name">Adam Schiff</div>
+      <div class="card-note">Demand federal election protection legislation and opposition to any measure that undermines the right to vote or have ballots counted.</div>
+      <a class="dial-btn" href="tel:+12022243841">📞 DC: (202) 224-3841</a>
+      <a class="dial-btn dial-btn-alt" href="tel:+13109147300">📞 LA: (310) 914-7300</a>
+    </div>
+
+    <div class="card senate">
+      <div class="card-role">U.S. Senator — California</div>
+      <div class="card-name">Alex Padilla</div>
+      <div class="card-note">Former CA Secretary of State — uniquely positioned to lead on election protection. Demand he champion federal legislation and oppose voter suppression efforts.</div>
+      <a class="dial-btn" href="tel:+12022243553">📞 DC: (202) 224-3553</a>
+      <a class="dial-btn dial-btn-alt" href="tel:+13102314494">📞 LA: (310) 231-4494</a>
+    </div>
+
+  </div>
+
+  <!-- CA-01 SPECIAL ELECTION -->
+  <div class="section-label">● CA-01 Special Election</div>
+  <div class="cards">
+
+    <div class="vacant-card">
+      <div class="vacant-label">Seat Vacant</div>
+      <p>Rep. Doug LaMalfa passed away January 6, 2026. The CA-01 House seat is currently vacant.<br /><br />
+      <strong>Special Election: June 2, 2026.</strong> Your vote in this race directly affects the balance of power in the U.S. House. Make sure you're registered and have a plan to vote.</p>
+    </div>
+
+  </div>
+
+  <div class="back-wrap">
+    <a class="back-link" href="preview.html">← Back</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="back-link" href="index.html">Full Action Guide →</a>
+  </div>
+
+  <div class="footer">Shasta Coalition &nbsp;·&nbsp; Civic Tools &nbsp;·&nbsp; 2026</div>
+
+</body>
+</html>
