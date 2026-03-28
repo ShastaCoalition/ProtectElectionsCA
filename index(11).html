@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the March: How Ordinary People Force Political Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@900&family=Source+Sans+3:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0d1f3c;
+      --navy2: #122040;
+      --red: #c8102e;
+      --red2: #a50d26;
+      --gold: #f5b800;
+      --gold2: #d4a000;
+      --cream: #f5f0e8;
+      --cream2: #ede8dc;
+      --grid-line: rgba(13,31,60,0.08);
+      --text: #0d1f3c;
+      --text-mid: #2a3a5a;
+      --text-light: #5a6a8a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── BLUEPRINT GRID BACKGROUND ── */
+    .grid-bg {
+      position: relative;
+      background-color: var(--cream);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(rgba(13,31,60,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13,31,60,0.03) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+    }
+
+    .dark-bg {
+      background: var(--navy);
+      position: relative;
+    }
+
+    .dark-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    /* ── CONTAINER ── */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; width: 100%; }
+
+    /* ── STAMPS ── */
+    .stamp {
+      display: inline-block;
+      border: 3px solid currentColor;
+      padding: 3px 10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      transform: rotate(-2deg);
+      opacity: 0.85;
+    }
+    .stamp-red { color: var(--red); border-color: var(--red); }
+    .stamp-navy { color: var(--navy); border-color: var(--navy); }
+    .stamp-gold { color: var(--gold2); border-color: var(--gold2); }
+
+    /* ── CROSSHAIR CORNER MARKS ── */
+    .corner-marks { position: relative; }
+    .corner-marks::before, .corner-marks::after {
+      content: '+';
+      position: absolute;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      color: rgba(13,31,60,0.2);
+      line-height: 1;
+    }
+    .corner-marks::before { top: 8px; left: 8px; }
+    .corner-marks::after { top: 8px; right: 8px; }
+
+    /* ═══════════════════════════════════
+       HERO
+    ═══════════════════════════════════ */
+    .hero {
+      padding: 40px 0 56px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--text-light);
+    }
+
+    .gauge-wrap {
+      margin: 0 auto 28px;
+      width: 270px;
+      height: 130px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 9vw, 96px);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .hero h1 .serif-sub {
+      display: block;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      font-style: italic;
+      color: var(--red);
+      text-transform: none;
+    }
+
+    .hero-sub {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(15px, 2.5vw, 20px);
+      color: var(--text-mid);
+      max-width: 480px;
+      width: 90%;
+      margin: 12px auto 32px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 4px;
+      background: var(--red);
+      margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════
+       SECTION LABELS
+    ═══════════════════════════════════ */
+    .sec-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      color: var(--text-mid);
+      border-bottom: 2px solid rgba(13,31,60,0.2);
+      padding-bottom: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* ═══════════════════════════════════
+       BIG QUESTION SECTION
+    ═══════════════════════════════════ */
+    .big-q {
+      padding: 64px 0;
+    }
+
+    .bq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(13,31,60,0.15);
+      border: 2px solid rgba(13,31,60,0.15);
+      margin-bottom: 48px;
+    }
+
+    .bq-left {
+      background: var(--cream);
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    .bq-left::after {
+      content: '';
+      position: absolute;
+      bottom: 16px;
+      left: 24px;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .viral-label {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--text-light);
+      border: 1px solid var(--text-light);
+      padding: 3px 10px;
+    }
+
+    .bq-question {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .bq-question .red-q {
+      color: var(--red);
+      font-size: 1.3em;
+      vertical-align: middle;
+    }
+
+    .heartbeat-wrap { margin-bottom: 24px; }
+
+    .bq-right {
+      background: var(--cream2);
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    .bq-answer-banner {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .bq-answer-banner::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-right: 10px solid var(--navy);
+    }
+
+    .bq-answer-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(17px, 2.5vw, 22px);
+      line-height: 1.4;
+      color: var(--white);
+    }
+
+    .bq-sub {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════
+       ESCALATION LADDER
+    ═══════════════════════════════════ */
+    .ladder-section {
+      padding: 64px 0;
+    }
+
+    .ladder-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ladder-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .ladder-steps .step:nth-child(1) { margin-top: 100px; }
+    .ladder-steps .step:nth-child(2) { margin-top: 50px; }
+    .ladder-steps .step:nth-child(3) { margin-top: 0; }
+
+    .step {
+      position: relative;
+      padding: 28px 28px 28px 28px;
+      border: 2px solid var(--navy);
+    }
+
+    .step:nth-child(1) { background: var(--cream2); border-color: var(--navy); }
+    .step:nth-child(2) { background: #f5c96a; border-color: var(--navy); }
+    .step:nth-child(3) { background: var(--red); border-color: var(--red2); }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      color: var(--navy);
+      z-index: 10;
+    }
+
+    .step-badge {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .step:nth-child(1) .step-badge { color: var(--text-light); }
+    .step:nth-child(2) .step-badge { color: var(--navy2); }
+    .step:nth-child(3) .step-badge { color: rgba(255,255,255,0.8); }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .step:nth-child(1) .step-num { color: var(--navy); }
+    .step:nth-child(2) .step-num { color: var(--navy); }
+    .step:nth-child(3) .step-num { color: var(--white); }
+
+    .step-body {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .step:nth-child(1) .step-body { color: var(--text-mid); }
+    .step:nth-child(2) .step-body { color: var(--navy2); }
+    .step:nth-child(3) .step-body { color: rgba(255,255,255,0.92); }
+
+    /* ═══════════════════════════════════
+       TACTICS MATRIX
+    ═══════════════════════════════════ */
+    .tactics-section {
+      padding: 64px 0;
+      background: var(--cream2);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .tactics-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .tactics-title .megaphone { font-size: 0.7em; }
+
+    .tactics-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid var(--navy);
+      margin-bottom: 28px;
+    }
+
+    .tactics-table th {
+      padding: 14px 20px;
+      text-align: left;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .tactics-table th:first-child {
+      background: var(--cream2);
+      color: var(--navy);
+      width: 30%;
+    }
+
+    .tactics-table th.col-bad {
+      background: rgba(13,31,60,0.12);
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    .tactics-table th.col-good {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .tactics-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(13,31,60,0.12);
+      font-size: 15px;
+      vertical-align: top;
+    }
+
+    .tactics-table td:first-child {
+      font-weight: 700;
+      color: var(--navy);
+      background: rgba(13,31,60,0.04);
+    }
+
+    .tactics-table td.bad {
+      color: var(--text-light);
+      text-align: center;
+      background: rgba(13,31,60,0.04);
+      font-style: italic;
+    }
+
+    .tactics-table td.good {
+      color: var(--navy);
+      text-align: center;
+      background: rgba(200,16,46,0.06);
+      font-weight: 600;
+      border-left: 3px solid var(--red);
+      border-right: 3px solid var(--red);
+    }
+
+    .tactics-table tr:last-child td.good {
+      border-bottom: 3px solid var(--red);
+    }
+
+    .tactics-confirm {
+      background: var(--navy);
+      color: var(--white);
+      padding: 18px 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(16px, 2.5vw, 22px);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    .tactics-confirm span { color: var(--gold); }
+
+    /* ═══════════════════════════════════
+       ANATOMY OF A CALL
+    ═══════════════════════════════════ */
+    .anatomy-section {
+      padding: 64px 0;
+    }
+
+    .anatomy-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 40px;
+    }
+
+    .anatomy-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .flow-step {
+      flex: 1;
+      min-width: 130px;
+      border: 2px solid var(--navy);
+      padding: 20px 16px;
+      position: relative;
+      background: var(--cream);
+    }
+
+    .flow-step:last-child {
+      background: var(--red);
+      border-color: var(--red2);
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 14px solid var(--navy);
+      z-index: 10;
+    }
+
+    .flow-step:not(:last-child) { margin-right: 14px; }
+
+    .flow-icon { font-size: 22px; margin-bottom: 8px; }
+
+    .flow-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .flow-step:last-child .flow-title { color: var(--white); }
+
+    .flow-desc {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+    .flow-step:last-child .flow-desc { color: rgba(255,255,255,0.9); }
+
+    /* ═══════════════════════════════════
+       5CALLS FEATURE
+    ═══════════════════════════════════ */
+    .calls-section {
+      padding: 64px 0;
+      background: var(--cream2);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .calls-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .calls-title span { color: var(--red); }
+
+    .calls-card-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .calls-main {
+      background: var(--white);
+      border: 2px solid var(--navy);
+      padding: 28px;
+    }
+
+    .calls-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--navy);
+      font-weight: 400;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .calls-checks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .calls-checks li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 1px solid rgba(13,31,60,0.1);
+      font-size: 15px;
+      color: var(--text);
+    }
+    .calls-checks li:last-child { border-bottom: none; }
+    .calls-checks li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .calls-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      padding: 11px 22px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+    }
+    .btn-primary:hover { background: var(--red); color: var(--white); text-decoration: none; }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 9px 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+
+    .resistbot-note {
+      background: rgba(13,31,60,0.06);
+      border: 1px solid rgba(13,31,60,0.15);
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+    .resistbot-note strong { color: var(--navy); }
+
+    .calls-phone-art {
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════
+       MAY DAY SECTION
+    ═══════════════════════════════════ */
+    .mayday-section {
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mayday-section::before {
+      content: 'MAY 1';
+      position: absolute;
+      right: -40px;
+      bottom: -30px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .mayday-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .mayday-date-block {
+      flex-shrink: 0;
+    }
+
+    .mayday-cal {
+      background: var(--red);
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100px;
+      text-align: center;
+    }
+    .mayday-cal-top {
+      background: var(--red2);
+      padding: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--white);
+    }
+    .mayday-cal-num {
+      padding: 8px 4px 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .mayday-title-block { flex: 1; min-width: 240px; }
+
+    .mayday-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    .mayday-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .mayday-title span { color: var(--gold); }
+
+    .mayday-brief {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      line-height: 1.65;
+    }
+
+    .mayday-roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .role-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 20px;
+    }
+
+    .role-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .role-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.55;
+    }
+
+    .mayday-pledge {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid var(--gold);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .pledge-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--white);
+      font-style: italic;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 11px 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+    .btn-gold:hover { background: var(--gold2); color: var(--navy); text-decoration: none; }
+
+    /* ═══════════════════════════════════
+       HISTORICAL TABLE
+    ═══════════════════════════════════ */
+    .history-section {
+      padding: 64px 0;
+    }
+
+    .history-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid var(--navy);
+    }
+
+    .history-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 18px;
+      text-align: left;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+    }
+
+    .history-table th:last-child {
+      background: var(--red);
+    }
+
+    .history-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(13,31,60,0.12);
+      font-size: 15px;
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .history-table td:first-child { font-weight: 700; width: 24%; }
+    .history-table td:last-child {
+      background: rgba(200,16,46,0.07);
+      font-weight: 600;
+      color: var(--red2);
+      border-left: 3px solid var(--red);
+    }
+    .history-table tr:nth-child(even) td { background: rgba(13,31,60,0.03); }
+    .history-table tr:nth-child(even) td:last-child { background: rgba(200,16,46,0.1); }
+
+    /* ═══════════════════════════════════
+       AFFILIATIONS
+    ═══════════════════════════════════ */
+    .affil-section {
+      padding: 64px 0;
+      background: var(--cream2);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .affil-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 54px);
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    .affil-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(13,31,60,0.12);
+    }
+
+    .affil-col {
+      background: var(--cream);
+      padding: 28px 24px;
+    }
+
+    .affil-col h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      border-bottom: 3px solid var(--red);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+
+    .affil-item {
+      margin-bottom: 14px;
+    }
+
+    .affil-item strong {
+      display: block;
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .affil-item a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .affil-item a:hover { color: var(--red); }
+
+    .affil-item p {
+      font-size: 13.5px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════
+       GOLDEN RULE CLOSER
+    ═══════════════════════════════════ */
+    .closer {
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .closer-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .closer-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 72px);
+      color: var(--white);
+      line-height: 1.05;
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .closer-quote span { color: var(--gold); }
+
+    .closer-cta {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+    .closer-cta strong { color: var(--white); }
+
+    .closer-btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ── ARE YOU ON OUR SIDE BUTTON ── */
+    .btn-olive {
+      display: inline-block;
+      background: #7a8a50;
+      color: #fff8f0;
+      text-decoration: none;
+      padding: 16px 40px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.12em;
+      box-shadow: 0 6px 24px rgba(100,120,60,0.45);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 440px;
+    }
+    .btn-olive:hover { background: #6a7a42; color: #fff8f0; text-decoration: none; }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--navy);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+    }
+    .btn-white:hover { background: var(--gold); color: var(--navy); text-decoration: none; }
+
+    .btn-outline-white {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+    }
+    .btn-outline-white:hover { border-color: var(--white); }
+
+    /* ═══════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.2s; }
+    .fade-up:nth-child(3) { animation-delay: 0.3s; }
+    .fade-up:nth-child(4) { animation-delay: 0.4s; }
+    .fade-up:nth-child(5) { animation-delay: 0.5s; }
+    .fade-up:nth-child(6) { animation-delay: 0.6s; }
+
+    /* ═══════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════ */
+    @media (max-width: 700px) {
+      .bq-grid { grid-template-columns: 1fr; }
+      .bq-right { padding: 32px 24px; }
+      .bq-answer-banner::before { display: none; }
+      .ladder-steps { grid-template-columns: 1fr; }
+      .ladder-steps .step:nth-child(1),
+      .ladder-steps .step:nth-child(2),
+      .ladder-steps .step:nth-child(3) { margin-top: 0; }
+      .step:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -22px; transform: translateX(-50%); }
+      .step:not(:last-child) { margin-right: 0; margin-bottom: 14px; }
+      .anatomy-flow { flex-direction: column; }
+      .flow-step:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -16px; transform: translateX(-50%); border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 14px solid var(--navy); border-bottom: none; }
+      .flow-step:not(:last-child) { margin-right: 0; margin-bottom: 14px; }
+      .calls-card-wrap { grid-template-columns: 1fr; }
+      .calls-phone-art { display: none; }
+      .affil-cols { grid-template-columns: 1fr; }
+      .mayday-roles { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .bq-left { padding: 32px 20px; }
+      .mayday-roles { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://shastacoalition.github.io/Defend-Democracy-Action/">
+  <meta property="og:title"        content="Beyond the March: How Ordinary People Force Political Change">
+  <meta property="og:description"  content="Practical, nonpartisan steps to escalate civic pressure, defend democracy, and force political change. No experience required.">
+  <meta property="og:image"        content="https://shastacoalition.github.io/Defend-Democracy-Action/preview-beyond-the-march.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Beyond the March: How Ordinary People Force Political Change">
+  <meta name="twitter:description" content="Practical, nonpartisan steps to escalate civic pressure, defend democracy, and force political change.">
+  <meta name="twitter:image"       content="https://shastacoalition.github.io/Defend-Democracy-Action/preview-beyond-the-march.png">
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="grid-bg">
+  <div class="hero corner-marks wrap">
+    <div class="gauge-wrap">
+      <svg viewBox="0 0 270 130" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="#ddd5c0" stroke-width="18" stroke-linecap="round"/>
+        <path d="M 140 30 A 90 90 0 0 1 200 110" fill="none" stroke="#c8102e" stroke-width="18" stroke-linecap="round" opacity="0.85"/>
+        <g stroke="#0d1f3c" stroke-width="1.5" opacity="0.4">
+          <line x1="20" y1="110" x2="26" y2="110"/>
+          <line x1="30" y1="66" x2="35" y2="69"/>
+          <line x1="63" y1="35" x2="66" y2="40"/>
+          <line x1="110" y1="20" x2="110" y2="26"/>
+          <line x1="157" y1="35" x2="154" y2="40"/>
+          <line x1="190" y1="66" x2="185" y2="69"/>
+          <line x1="200" y1="110" x2="194" y2="110"/>
+        </g>
+        <text x="12" y="124" font-size="9" fill="#5a6a8a" font-family="sans-serif">0</text>
+        <text x="98" y="15" font-size="9" fill="#5a6a8a" font-family="sans-serif">50</text>
+        <text x="202" y="124" font-size="9" fill="#5a6a8a" font-family="sans-serif">100</text>
+        <text x="72" y="92" font-size="8" fill="#5a6a8a" font-family="sans-serif" text-anchor="middle">CIVIC</text>
+        <text x="72" y="102" font-size="8" fill="#5a6a8a" font-family="sans-serif" text-anchor="middle">PRESSURE</text>
+        <text x="232" y="78" font-size="8" fill="#c8102e" font-family="sans-serif" text-anchor="middle" font-weight="bold">BREAKING</text>
+        <text x="232" y="90" font-size="8" fill="#c8102e" font-family="sans-serif" text-anchor="middle" font-weight="bold">POINT</text>
+        <line x1="110" y1="110" x2="170" y2="46" stroke="#0d1f3c" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="110" cy="110" r="7" fill="#0d1f3c"/>
+        <circle cx="110" cy="110" r="3" fill="#f5b800"/>
+        <text x="110" y="128" font-size="8" fill="#5a6a8a" font-family="sans-serif" text-anchor="middle">CRITICAL MASS</text>
+      </svg>
+    </div>
+
+    <div style="background:#0d1f3c; padding: 28px 36px 28px; margin: 0 auto; max-width: 680px; border-radius: 16px; box-shadow: 0 8px 32px rgba(13,31,60,0.35), 0 2px 8px rgba(13,31,60,0.2);">
+      <h1 style="color:#ffffff; font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,9vw,96px); letter-spacing:0.03em; line-height:0.95; margin-bottom:12px;">Beyond the March:<span style="display:block; font-family:'DM Serif Display',Georgia,serif; font-weight:400; font-style:italic; font-size:clamp(52px,9vw,96px); text-transform:none; color:#c9973a; line-height:1.1;">How Ordinary People Force Political Change</span></h1>
+      <p style="font-family:'DM Serif Display',serif; font-size:clamp(15px,2.5vw,20px); color:#c8cfe0; font-style:italic; max-width:480px; margin: 0 auto; line-height:1.5;">Practical steps anyone can take — no experience required.</p>
+    </div>
+    <div class="hero-divider" style="margin-top:20px;"></div>
+  </div>
+</div>
+
+<!-- ═══ BIG QUESTION ═══ -->
+<div class="grid-bg big-q">
+  <div class="wrap">
+    <div class="sec-label">The Question Everyone Asks After a Protest</div>
+    <div class="bq-grid">
+      <div class="bq-left corner-marks">
+        <div class="stamp stamp-navy" style="margin-bottom:20px;">FIELD MANUAL</div>
+        <div class="heartbeat-wrap">
+          <svg viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:320px;">
+            <polyline points="0,40 40,40 55,10 65,55 80,20 95,40 120,40 135,40 300,40"
+              fill="none" stroke="#0d1f3c" stroke-width="2" opacity="0.35"/>
+            <text x="90" y="56" font-size="9" fill="#5a6a8a" font-family="sans-serif">VIRAL MOMENT</text>
+          </svg>
+        </div>
+        <div class="bq-question">
+          Did that actually matter?<br>What else can I do? <span class="red-q">?</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="stamp stamp-red">BLUEPRINT</div>
+          <div class="stamp stamp-navy">ACTIVATE</div>
+        </div>
+      </div>
+      <div class="bq-right">
+        <div class="bq-answer-banner">
+          <p class="bq-answer-text">"Sustained, consistent pressure over time beats one-day bursts of activity."</p>
+        </div>
+        <p class="bq-sub">Movements that won — civil rights, labor rights, women's suffrage — did so through years of organized, escalating pressure, not viral moments.</p>
+        <br>
+        <p class="bq-sub"><strong>Protest is visible and necessary</strong> — it signals political cost and keeps issues in the press. But protest alone is not enough. The sections below show you what else to do, ranked by impact.</p>
+        <br>
+        <div class="stamp stamp-gold">ACTIVATE</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ESCALATION LADDER ═══ -->
+<div class="grid-bg ladder-section">
+  <div class="wrap">
+    <div class="sec-label">The Escalation Ladder of Civic Action</div>
+    <div class="ladder-title">Three Steps.<br>Start Today.</div>
+    <div class="ladder-steps">
+      <div class="step fade-up">
+        <span class="step-badge">Step 1 · Most Important · Do This First</span>
+        <div class="step-num">Make Phone Calls</div>
+        <div class="step-body">The single most effective individual action. Calls are logged, tallied, and placed on the member's desk daily. Takes 3 minutes. Use <strong><a href="https://5calls.org" target="_blank">5calls.org</a></strong> — it does everything for you.</div>
+      </div>
+      <div class="step fade-up">
+        <span class="step-badge">Step 2 · Critical · Do This Now</span>
+        <div class="step-num">Affiliate With an Organization</div>
+        <div class="step-body">Join a network — <a href="https://indivisible.org/get-involved/find-a-group/" target="_blank"><strong>Indivisible</strong></a>, a union, a civic group. Unaffiliated individuals miss the call when emergency mass action is needed. Being in a network means being included if called to mobilize. <strong>Shasta County residents:</strong> <a href="https://shastacoalition.org" target="_blank"><strong>Shasta Coalition →</strong></a></div>
+      </div>
+      <div class="step fade-up">
+        <span class="step-badge">Step 3 · Powerful · When Called</span>
+        <div class="step-num">Participate in Strikes &amp; Boycotts</div>
+        <div class="step-body">Organized economic action applies pressure that cannot be ignored. When a strike or boycott is called, participate at whatever level you can. <strong>Next action: May 1, 2026.</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 5 CALLS ═══ -->
+<div class="calls-section">
+  <div class="wrap">
+    <div class="sec-label">The Frictionless Civic Tool</div>
+    <div class="calls-title"><span>5Calls.org</span> — Try It Now</div>
+    <div class="calls-card-wrap">
+      <div class="calls-main">
+        <div class="calls-headline">Makes calling your representatives fast, easy, and effective. Works on any browser — no download needed. Free app also available.</div>
+        <ul class="calls-checks">
+          <li>Updated daily with the most pressing issues to call about</li>
+          <li>Automatically finds direct numbers for your specific representatives</li>
+          <li>Provides a plain-language script so you always know what to say</li>
+          <li>Tracks your calls so you can see your impact build over time</li>
+        </ul>
+        <div class="calls-cta-row">
+          <a href="https://5calls.org" target="_blank" class="btn-primary">Visit 5Calls.org →</a>
+          <a href="https://apps.apple.com/us/app/5-calls-contact-your-congress/id1202558609" target="_blank" class="btn-outline">📱 App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=org.a5calls.android.a5calls" target="_blank" class="btn-outline">🤖 Google Play</a>
+        </div>
+        <div class="resistbot-note">
+          <strong>Prefer texting?</strong> Use <a href="https://resist.bot" target="_blank">Resistbot</a> to text your reps directly from your phone.
+        </div>
+      </div>
+      <div class="calls-phone-art">
+        <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="5" width="100" height="190" rx="14" ry="14" fill="#0d1f3c" stroke="#0d1f3c" stroke-width="2"/>
+          <rect x="16" y="20" width="88" height="150" rx="4" ry="4" fill="#f5f0e8"/>
+          <rect x="45" y="8" width="30" height="6" rx="3" fill="#2a3a5a"/>
+          <circle cx="60" cy="183" r="8" fill="#2a3a5a"/>
+          <rect x="22" y="26" width="76" height="12" rx="2" fill="#c8102e"/>
+          <text x="60" y="36" font-family="sans-serif" font-size="7" fill="white" text-anchor="middle" font-weight="bold">5CALLS.ORG</text>
+          <rect x="22" y="44" width="50" height="6" rx="1" fill="#ddd5c0"/>
+          <rect x="22" y="55" width="76" height="24" rx="3" fill="#0d1f3c"/>
+          <text x="60" y="71" font-family="sans-serif" font-size="7" fill="#f5b800" text-anchor="middle">CALL NOW</text>
+          <rect x="22" y="86" width="76" height="5" rx="1" fill="#ddd5c0"/>
+          <rect x="22" y="96" width="60" height="5" rx="1" fill="#ddd5c0"/>
+          <rect x="22" y="108" width="76" height="50" rx="3" fill="#f0ebe0"/>
+          <text x="60" y="128" font-family="sans-serif" font-size="6" fill="#5a6a8a" text-anchor="middle">✓ Call logged</text>
+          <text x="60" y="140" font-family="sans-serif" font-size="6" fill="#5a6a8a" text-anchor="middle">3 min · 1 call made</text>
+        </svg>
+      </div>
+</div>
+
+<!-- ═══ ANATOMY OF A CALL ═══ -->
+<div class="grid-bg anatomy-section">
+  <div class="wrap">
+    <div class="sec-label">Step by Step</div>
+    <div class="anatomy-title">Anatomy of a Phone Call</div>
+    <div class="anatomy-flow">
+      <div class="flow-step">
+        <div class="flow-icon">📱</div>
+        <div class="flow-title">Citizen Dials</div>
+        <div class="flow-desc">Keep it simple: Name, Zip Code, Clear Position.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🧑‍💼</div>
+        <div class="flow-title">Staffer Answers</div>
+        <div class="flow-desc">"I'd like my call logged as [supporting/opposing] [issue]."</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">📋</div>
+        <div class="flow-title">Call is Logged</div>
+        <div class="flow-desc">Staffers meticulously track these exact tallies by issue.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">📊</div>
+        <div class="flow-title">Daily Tally Generated</div>
+        <div class="flow-desc">Numbers compiled into an end-of-day briefing document.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🏛️</div>
+        <div class="flow-title">Representative Reviews</div>
+        <div class="flow-desc">The member directly reads the quantitative data.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">⚡</div>
+        <div class="flow-title">Vote is Influenced</div>
+        <div class="flow-desc">A ringing phone actively moves members of Congress.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAY DAY ═══ -->
+<div class="dark-bg mayday-section">
+  <div class="wrap">
+    <div class="sec-label" style="color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.2);">International Mass Action · Step 3 of the Escalation Ladder</div>
+    <div class="mayday-header">
+      <div class="mayday-date-block">
+        <div class="mayday-cal">
+          <div class="mayday-cal-top">MAY</div>
+          <div class="mayday-cal-num">1</div>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:0.15em; color:rgba(255,255,255,0.5); text-align:center; margin-top:6px;">2026 · FRIDAY</div>
+      </div>
+      <div class="mayday-title-block">
+        <div class="mayday-eyebrow">International May Day Mass Action</div>
+        <div class="mayday-title">Your Country<br><span>Needs You</span></div>
+        <p class="mayday-brief">On Friday, May 1, 2026, workers and citizens across the United States and around the world are called to take part in a coordinated mass action. Nobody can do everything — but everyone can do something.</p>
+      </div>
+    </div>
+    <div class="mayday-roles">
+      <div class="role-card">
+        <h4>💼 Have a Job?</h4>
+        <p>Use a sick day or available paid time off — following your exact call-in procedure. Talk to coworkers in person, outside work platforms. Numbers protect everyone.</p>
+      </div>
+      <div class="role-card">
+        <h4>🎓 Are You a Student?</h4>
+        <p>Stay home or organize a walkout. Coordinate with classmates beforehand — in person is best. Don't be alone on this.</p>
+      </div>
+      <div class="role-card">
+        <h4>🏠 Can't Miss Work?</h4>
+        <p>Don't spend money that day. Join a rally or march. Recruit your neighbors and family. Make your participation visible.</p>
+      </div>
+      <div class="role-card">
+        <h4>🛒 Can't Boycott Everything?</h4>
+        <p>Boycott what you can. Where you shop, what you stream, what you buy — targeted choices add up at massive scale.</p>
+      </div>
+    </div>
+    <div class="mayday-pledge">
+      <p class="pledge-text">"Nobody can do everything. But everyone can do something. And right now, their country needs them to do it."</p>
+      <a href="https://maydaystrong.org" target="_blank" class="btn-gold">Sign the Pledge → maydaystrong.org</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HISTORICAL PROOF ═══ -->
+<div class="grid-bg history-section">
+  <div class="wrap">
+    <div class="sec-label">Historical Proof — Economic Action Works</div>
+    <div class="history-title">It Has Always Worked.<br>Here's the Evidence.</div>
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Location &amp; Date</th>
+          <th>The Action</th>
+          <th>The Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇺🇸 Philadelphia, 1835</td>
+          <td>America's first citywide general strike — 20,000 workers across 40 trades demanded a 10-hour workday</td>
+          <td>WON — secured the 10-hour workday; set the model for labor organizing across the country</td>
+        </tr>
+        <tr>
+          <td>🇺🇸 San Francisco, 1934</td>
+          <td>150,000 workers shut down the city in solidarity with dockworkers. National Guard deployed; hundreds arrested.</td>
+          <td>WON — union recognition and the hiring hall system; shifted power on the docks for generations</td>
+        </tr>
+        <tr>
+          <td>🇿🇦 South Africa, 1950–61</td>
+          <td>ANC-led strikes as part of the anti-apartheid campaign</td>
+          <td>Built mass resistance that ultimately ended apartheid</td>
+        </tr>
+        <tr>
+          <td>🇮🇸 Iceland, 1975</td>
+          <td>"Women's Day Off" — 90% of women across the country walked out</td>
+          <td>WON — major equal rights legislation passed within years</td>
+        </tr>
+        <tr>
+          <td>🇵🇱 Poland, 1988</td>
+          <td>Solidarity-led strikes across industries</td>
+          <td>WON — forced communist government to negotiate; led directly to free elections</td>
+        </tr>
+        <tr>
+          <td>🇪🇸 Spain, 2010 &amp; 2012</td>
+          <td>General strikes against austerity brought millions into the streets</td>
+          <td>Forced government policy changes and shaped election outcomes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ AFFILIATIONS ═══ -->
+<div class="affil-section">
+  <div class="wrap">
+    <div class="sec-label">Step 2 — Affiliation Targets</div>
+    <div class="affil-title">Defending the Ecosystem:<br>Where to Plug In</div>
+    <div class="affil-cols">
+      <div class="affil-col">
+        <h3>Civil Rights &amp; Litigation</h3>
+        <div class="affil-item">
+          <strong><a href="https://www.aclu.org" target="_blank">ACLU</a></strong>
+          <p>Constitutional rights and litigation. Sign up for action alerts.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://naacp.org" target="_blank">NAACP</a></strong>
+          <p>Racial justice and voting rights advocacy.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://www.splcenter.org" target="_blank">Southern Poverty Law Center</a></strong>
+          <p>Tracks extremism; litigates civil rights cases.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://www.citizensforethics.org" target="_blank">CREW</a></strong>
+          <p>Government ethics litigation and accountability.</p>
+        </div>
+      </div>
+      <div class="affil-col">
+        <h3>Democracy &amp; Voting</h3>
+        <div class="affil-item">
+          <strong><a href="https://www.commoncause.org" target="_blank">Common Cause</a></strong>
+          <p>Gerrymandering, dark money, and voting access.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://www.brennancenter.org" target="_blank">Brennan Center</a></strong>
+          <p>Election law research and voting rights litigation.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://democracydocket.com" target="_blank">Democracy Docket</a></strong>
+          <p>Real-time tracking of voting rights litigation nationwide.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://www.lwv.org" target="_blank">League of Women Voters</a></strong>
+          <p>Nonpartisan election integrity, 100+ years.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://indivisible.org/get-involved/find-a-group/" target="_blank">Indivisible</a></strong>
+          <p>Local constituent pressure networks. Find your chapter.</p>
+        </div>
+      </div>
+      <div class="affil-col">
+        <h3>Independent Journalism</h3>
+        <div class="affil-item">
+          <strong><a href="https://www.propublica.org" target="_blank">ProPublica</a></strong>
+          <p>Accountability journalism on government and institutions. Free to read.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://heathercoxrichardson.substack.com" target="_blank">Heather Cox Richardson</a></strong>
+          <p><em>Letters from an American</em> — daily historical context on democracy and current events.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://www.themarshallproject.org" target="_blank">The Marshall Project</a></strong>
+          <p>Criminal justice reporting.</p>
+        </div>
+        <div class="affil-item">
+          <strong><a href="https://documentedny.com" target="_blank">Documented</a></strong>
+          <p>Immigration and corporate influence in politics.</p>
+        </div>
+        <div class="affil-item">
+          <strong>Your local newspaper</strong>
+          <p>Primary check on local government misconduct. Subscribe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="dark-bg closer">
+  <div class="wrap" style="position:relative; z-index:1;">
+    <div class="closer-label">The Golden Rule of Civic Action</div>
+    <div class="closer-quote">
+      Nobody can do everything.<br>
+      But <span>everyone</span> can do something.<br>
+      And right now, <span>your country</span><br>needs <span>you</span> to do it.
+    </div>
+    <p class="closer-cta"><strong>Download this blueprint. Share it with three people. Pick your first action today.</strong></p>
+
+    <!-- DIVIDER -->
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;">
+      <div style="flex:1; height:1px; background:rgba(255,255,255,0.15);"></div>
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:3px; color:rgba(255,255,255,0.35); white-space:nowrap;">ARE YOU ON OUR SIDE?</span>
+      <div style="flex:1; height:1px; background:rgba(255,255,255,0.15);"></div>
+    </div>
+
+    <!-- EMBEDDED CARD -->
+    <div style="display:flex; justify-content:center; margin-bottom:48px;">
+      <div class="ayoos-card">
+        <div class="ayoos-diag"></div>
+        <div class="ayoos-corner-tl"></div>
+        <div class="ayoos-corner-br"></div>
+
+        <!-- Screen 1: Question -->
+        <div class="ayoos-screen ayoos-active" id="ayoos-question">
+          <p class="ayoos-statement">Democracy is under attack and this is a long fight.</p>
+          <p class="ayoos-question">Are you on our side?</p>
+          <div class="ayoos-btns">
+            <button class="ayoos-btn ayoos-yes" onclick="ayoosShow('ayoos-form')">YES</button>
+            <button class="ayoos-btn ayoos-no" onclick="ayoosShow('ayoos-no-screen')">No</button>
+          </div>
+        </div>
+
+        <!-- Screen 2: Form -->
+        <div class="ayoos-screen" id="ayoos-form">
+          <p class="ayoos-persuade">We'll only reach out when there's something worth doing. Drop your name and cell — <strong>never sold, never shared.</strong> And don't worry, we're not asking for money.</p>
+          <div class="ayoos-field">
+            <label>First Name</label>
+            <input type="text" id="ayoos-first" placeholder="First name" autocapitalize="words">
+          </div>
+          <div class="ayoos-field">
+            <label>Last Name</label>
+            <input type="text" id="ayoos-last" placeholder="Last name" autocapitalize="words">
+          </div>
+          <div class="ayoos-field">
+            <label>Cell Number</label>
+            <input type="tel" id="ayoos-phone" placeholder="10-digit number" maxlength="14">
+            <div class="ayoos-error" id="ayoos-phone-err">Please enter a valid 10-digit number.</div>
+          </div>
+          <div class="ayoos-field">
+            <label>Email Address</label>
+            <input type="email" id="ayoos-email" placeholder="your@email.com" autocomplete="email">
+            <div class="ayoos-error" id="ayoos-email-err">Please enter a valid email address.</div>
+          </div>
+          <button class="ayoos-submit" onclick="ayoosSubmit()">I'M IN</button>
+        </div>
+
+        <!-- Screen 3: Thank You -->
+        <div class="ayoos-screen" id="ayoos-thanks">
+          <span style="font-size:48px; display:block; margin-bottom:16px;">🤝</span>
+          <p class="ayoos-question" style="font-size:34px; margin-bottom:16px;">Thank you!</p>
+          <p class="ayoos-persuade" style="font-weight:700;">Democracy has always been defended by ordinary people who refused to give up on it. You're one of them now — and that matters more than you know. We'll be in touch, and we are so glad you're with us! 🌟</p>
+        </div>
+
+        <!-- Screen 4: No -->
+        <div class="ayoos-screen" id="ayoos-no-screen">
+          <p class="ayoos-question" style="font-size:30px; margin-bottom:16px;">That's okay.</p>
+          <p class="ayoos-persuade">If you change your mind, we'll be here.</p>
+          <button class="ayoos-btn ayoos-no" style="margin-top:8px;" onclick="ayoosShow('ayoos-question')">← Back</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin: 40px 0 32px;">
+      <div style="flex:1; height:1px; background:rgba(255,255,255,0.15);"></div>
+      <span style="font-family:'Source Sans 3',sans-serif; font-size:11px; letter-spacing:3px; color:rgba(255,255,255,0.35); white-space:nowrap; text-transform:uppercase;">More Resources</span>
+      <div style="flex:1; height:1px; background:rgba(255,255,255,0.15);"></div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 500px; margin: 0 auto;">
+      <a href="https://maydaystrong.org" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px 20px; background: #f5b800; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.4); width: 50%;">
+        <span style="font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 700; color: rgba(13,31,60,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; text-align: center;">Next Nationwide Event</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; color: #0d1f3c; text-align: center; line-height: 1.3;">Sign the May Day Pledge →</span>
+      </a>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%;">
+        <a href="https://shastacoalition.github.io/ProtectElectionsCA/preview" target="_blank" style="display: flex; flex-direction: column; padding: 18px 16px; background: #7a8a50; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+          <span style="font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Quick Dial</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 900; color: #fff; line-height: 1.3;">California Officials →</span>
+        </a>
+        <span style="display: flex; flex-direction: column; padding: 18px 16px; background: #1a3a6a; border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+          <span style="font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">Coming Soon</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 900; color: rgba(255,255,255,0.75); line-height: 1.3;">Shasta County Guide</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<iframe name="ayoos-iframe" id="ayoos-iframe" style="display:none;"></iframe>
+
+<style>
+.ayoos-card {
+  background: #2a1e18;
+  border-radius: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(122,138,80,0.3);
+}
+.ayoos-diag {
+  position: absolute; inset: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 42%, 0 66%);
+  background: linear-gradient(135deg, #7a4a38 0%, #9a6050 100%);
+  z-index: 1; pointer-events: none;
+}
+.ayoos-corner-tl {
+  position: absolute; top: 0; left: 0;
+  width: 0; height: 0; border-style: solid;
+  border-width: 60px 60px 0 0;
+  border-color: #7a8a50 transparent transparent transparent;
+  z-index: 5; pointer-events: none;
+}
+.ayoos-corner-br {
+  position: absolute; bottom: 0; right: 0;
+  width: 0; height: 0; border-style: solid;
+  border-width: 0 0 60px 60px;
+  border-color: transparent transparent #7a8a50 transparent;
+  z-index: 5; pointer-events: none;
+}
+.ayoos-screen { display: none; position: relative; z-index: 3; padding: 32px 28px; }
+.ayoos-active { display: block; }
+.ayoos-statement { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #e8c4a0; line-height: 1.4; margin-bottom: 14px; }
+.ayoos-question { font-family: 'DM Serif Display', serif; font-size: 38px; font-weight: 900; color: #fff8f0; line-height: 1.05; margin-bottom: 28px; text-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+.ayoos-btns { display: flex; gap: 12px; }
+.ayoos-btn { flex: 1; padding: 16px; border-radius: 10px; border: none; font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 900; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; transition: opacity 0.15s; }
+.ayoos-btn:hover { opacity: 0.88; }
+.ayoos-yes { background: #7a8a50; color: #fff8f0; box-shadow: 0 6px 22px rgba(100,120,60,0.4); }
+.ayoos-no { background: transparent; color: #7a6050; border: 1px solid #3a2a22; font-weight: 400; font-size: 16px; letter-spacing: 1px; text-transform: none; }
+.ayoos-persuade { font-family: 'DM Sans', sans-serif; font-size: 18px; color: #f5ede0; line-height: 1.6; margin-bottom: 24px; }
+.ayoos-persuade strong { color: #ffffff; font-weight: 900; }
+.ayoos-field { margin-bottom: 16px; }
+.ayoos-field label { display: block; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #f5ede0; margin-bottom: 7px; font-family: 'DM Sans', sans-serif; }
+.ayoos-field input { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid #6a5a4a; background: #1a1008; color: #ffffff; font-family: 'DM Sans', sans-serif; font-size: 18px; outline: none; transition: border-color 0.2s; }
+.ayoos-field input:focus { border-color: #7a8a50; }
+.ayoos-field input::placeholder { color: #b8a898; }
+.ayoos-field input[type="text"] { text-transform: capitalize; }
+.ayoos-error { color: #cc6644; font-size: 13px; margin-top: 6px; display: none; }
+.ayoos-submit { width: 100%; padding: 17px; border-radius: 10px; border: none; background: #7a8a50; color: #fff8f0; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 8px; box-shadow: 0 6px 22px rgba(100,120,60,0.4); }
+.ayoos-submit:hover { opacity: 0.88; }
+</style>
+
+<script>
+function ayoosShow(id) {
+  document.querySelectorAll('.ayoos-screen').forEach(s => s.classList.remove('ayoos-active'));
+  document.getElementById(id).classList.add('ayoos-active');
+}
+
+document.getElementById('ayoos-phone').addEventListener('input', function(e) {
+  let val = e.target.value.replace(/\D/g, '').substring(0, 10);
+  if (val.length >= 7) val = '(' + val.substring(0,3) + ') ' + val.substring(3,6) + '-' + val.substring(6);
+  else if (val.length >= 4) val = '(' + val.substring(0,3) + ') ' + val.substring(3);
+  else if (val.length > 0) val = '(' + val;
+  e.target.value = val;
+});
+
+function ayoosSubmit() {
+  const firstName = document.getElementById('ayoos-first').value.trim();
+  const lastName  = document.getElementById('ayoos-last').value.trim();
+  const phone     = document.getElementById('ayoos-phone').value.trim();
+  const email     = document.getElementById('ayoos-email').value.trim();
+  const phoneErr  = document.getElementById('ayoos-phone-err');
+  const emailErr  = document.getElementById('ayoos-email-err');
+
+  if (!firstName || !lastName) { alert('Please enter your first and last name.'); return; }
+  if (phone.replace(/\D/g,'').length !== 10) { phoneErr.style.display = 'block'; return; }
+  phoneErr.style.display = 'none';
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailErr.style.display = 'block'; return; }
+  emailErr.style.display = 'none';
+
+  const base = 'https://docs.google.com/forms/d/e/1FAIpQLScu4sMnw0p2m3fGV-lD5DZxzJw8m8HAx9-hoaiUI6eKO4-rvg/formResponse';
+  const params = [
+    'entry.791582850=' + encodeURIComponent(firstName),
+    'entry.1260114464=' + encodeURIComponent(lastName),
+    'entry.756928319=' + encodeURIComponent(phone.replace(/\D/g,'')),
+    'entry.60507739='  + encodeURIComponent(email),
+    'submit=Submit'
+  ].join('&');
+
+  const iframe = document.getElementById('ayoos-iframe');
+  iframe.src = base + '?' + params;
+
+  ayoosShow('ayoos-thanks');
+}
+</script>
+
+</body>
+</html>
